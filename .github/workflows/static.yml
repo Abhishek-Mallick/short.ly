@@ -37,15 +37,18 @@ jobs:
         uses: actions/setup-node@v3.8.1
         with:
           node-version: v20.8.0
-      - run: node index.js
+      - run: |
+            npm install yaml
+            npm install 
+            node index.js
       
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          # Upload entire repository
-          path: '.'
+          # To publish the out directory to github pages
+          path: 'out'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
